@@ -1,0 +1,114 @@
+<div class="cm-vr feature">
+
+    <header layout="row" layout-align="space-between center">
+        <!-- Page Title -->
+        <div class="md-headline"><i class="fas fa-file-alt"></i> Add Reports</div>
+    </header>
+
+    <!-- Progress bar -->
+    <div class="progressBarWrapper">
+        <md-progress-linear ng-show="addReportVM.dataIsLoading" md-mode="indeterminate"></md-progress-linear>
+    </div>
+
+    <pre>
+        addReportVM.new={{addReportVM.new | json}}
+<!--        myForm.$valid={{ myForm.$valid}}-->
+<!--        myForm.$invalid={{ myForm.$invalid}}-->
+<!--        myForm.$pristine={{ myForm.$pristine}}-->
+<!--        myForm.$dirty={{ myForm.$dirty}}-->
+
+<!--        myForm.report_name.$valid={{ myForm.report_name.$valid}}-->
+<!--        myForm.report_name.$invalid={{ myForm.report_name.$invalid}}-->
+<!--        myForm.report_name.$pristine={{ myForm.report_name.$pristine}}-->
+<!--        myForm.report_name.$dirty={{ myForm.report_name.$dirty}}-->
+<!--        myForm.report_name.$error={{myForm.report_name.$error | json}}-->
+<!--        myForm.report_name.$touched={{myForm.report_name.$touched}}-->
+    </pre>
+
+    <form name="myForm" novalidate>
+
+
+        <div layout="row">
+            <md-input-container>
+                <label> Report Name</label>
+                <input type="text" placeholder="Enter Report Name" name="report_name"
+                       ng-model="addReportVM.new.reportName" required/>
+                <span ng-show="myForm.report_name.$touched && myForm.report_name.$error.required">
+                Report name cannot be blank.
+            </span>
+            </md-input-container>
+        </div>
+
+
+        <div layout="row">
+            <md-input-container>
+                <label> Email Address</label>
+                <input type="email" placeholder="Enter Email" name="email_address"
+                       ng-model="addReportVM.new.emailAddress" required/>
+                <span ng-show="myForm.email_address.$touched && myForm.email_address.$error.required">
+                Email cannot be blank.
+            </span>
+            </md-input-container>
+        </div>
+
+
+        <br/>
+
+<!--this is the angular version of the drop down-->
+        <div layout="row">
+            <md-input-container>
+                <label> Select Priority </label>
+                <md-Select name="priority" ng-model="addReportVM.new.priority" required>
+                    <md-option ng-repeat="lookup in addReportVM.lookupData track by lookup.id" ng-value="{{lookup.id}}">
+                        {{lookup.name}}
+                        </md-option>
+                </md-Select>
+            </md-input-container>
+        </div>
+
+        <br/>
+
+<!--This is how to make a drop down with HTML-->
+        <!--    <Select name="Priority" ng-model="addReportVM.new.priorityHTML" layout="row">-->
+        <!--        <label>Select Priority [HTML]</label>-->
+        <!--        <option value="">&#45;&#45;select priority [HTML]&#45;&#45;</option>-->
+        <!--        <option value="1">Low</option>-->
+        <!--        <option value="2">High</option>-->
+        <!--    </Select>-->
+
+        <div layout="row">
+            <md-input-container>
+                <label>das ist gut?</label>
+                <input type="text" ng-change="addReportVM.validate()" name="is_good" ng-model="addReportVM.new.is_good" required>
+                <span ng-show="myForm.is_good.$touched && myForm.is_good.$error.customError">
+                Was ist das?
+            </span>
+            </md-input-container>
+        </div>
+
+        <br/>
+
+        <md-button class="md-warn md-raised">
+            <md-icon class="fas fa-4x fa-dog"></md-icon>
+            Cancel
+        </md-button>
+        <md-button class="md-primary md-raised md-accent" ng-click="myForm.$valid && addReportVM.save()" type="submit">
+            <md-icon class="fas fa-4x fa-cat"></md-icon>
+            Save
+        </md-button>
+        <md-button class="md-primary md-raised" ng-click="addReportVM.reset()">
+            <md-icon class="fas fa-4x fa-dragon"></md-icon>
+            Reset
+        </md-button>
+
+    </form>
+
+    <!--    <br/>-->
+    <!--    <button type="reset">-->
+    <!--        Reset-->
+    <!--    </button>-->
+    <!--    <button type="button">-->
+    <!--        Save-->
+    <!--    </button>-->
+
+</div>

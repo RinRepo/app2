@@ -1,0 +1,157 @@
+<div class="cm-vr feature">
+
+    <header layout="row" layout-align="space-between center">
+        <!-- Page Title -->
+        <div class="md-headline"><i class="fas fa-file-alt"></i> Add Indicator </div>
+    </header>
+
+    <!-- Progress bar -->
+    <div class="progressBarWrapper">
+        <md-progress-linear ng-show="addIndicatorVM.dataIsLoading" md-mode="indeterminate"></md-progress-linear>
+    </div>
+
+<!--    <pre>-->
+<!--        addReportVM.new={{addIndicatorVM.new | json}}-->
+
+<!--    </pre>-->
+
+    <form name="myForm" novalidate>
+            <br/>
+
+        <div layout="row">
+            <md-input-container>
+                <label> Indicator Value</label>
+                <input type="text" placeholder="Enter Indicator Value" name="indicator_value"
+                       ng-model="addIndicatorVM.new.indicatorValue" required/>
+                <span ng-show="myForm.indicator_value.$touched && myForm.indicator_value.$error.required">
+                Indicator Value cannot be blank.
+            </span>
+            </md-input-container>
+        </div>
+
+
+<!--        <div layout="row">-->
+<!--            <md-input-container>-->
+<!--                <label> Email Address</label>-->
+<!--                <input type="email" placeholder="Enter Email" name="email_address"-->
+<!--                       ng-model="addReportVM.new.emailAddress" required/>-->
+<!--                <span ng-show="myForm.email_address.$touched && myForm.email_address.$error.required">-->
+<!--                Email cannot be blank.-->
+<!--            </span>-->
+<!--            </md-input-container>-->
+<!--        </div>-->
+
+
+<!--        <br/>-->
+
+<!--this is the angular version of the drop down-->
+<!--        <div layout="row">-->
+<!--            <md-input-container>-->
+<!--                <label> Select Type </label>-->
+<!--                <md-Select name="priority" ng-model="addReportVM.new.priority" required>-->
+<!--                    <md-option ng-repeat="lookup in addReportVM.lookupData track by lookup.id" ng-value="{{lookup.id}}">-->
+<!--                        {{lookup.name}}-->
+<!--                        </md-option>-->
+<!--                </md-Select>-->
+<!--            </md-input-container>-->
+<!--        </div>-->
+
+<!--    <div layout="row">-->
+<!--        <md-input-container >-->
+<!--            <label> Select Type</label>-->
+<!--            <md-Select name="type" ng-model="addIndicatorVM.new.type" required>-->
+<!--                &lt;!&ndash;                <md-option value="">&#45;&#45;select priority [Angular]&#45;&#45;</md-option>&ndash;&gt;-->
+<!--                <md-option value="1">String</md-option>-->
+<!--                <md-option value="2">Domain</md-option>-->
+<!--                <md-option value="3">Email</md-option>-->
+<!--                <md-option value="4">Certificates</md-option>-->
+<!--                <md-option value="5">IP</md-option>-->
+<!--                <md-option value="6">File</md-option>-->
+<!--            </md-Select>-->
+<!--        </md-input-container>-->
+<!--    </div>-->
+
+        <div layout="row">
+            <md-input-container >
+                <label> Select Type</label>
+                <md-Select name="type" ng-model="addIndicatorVM.new.type" required>
+                    <md-option ng-repeat="lookup in addIndicatorVM.lookupData track by lookup.id" ng-value="{{lookup.id}}">
+                        {{lookup.name}}
+                    </md-option>
+                </md-Select>
+            </md-input-container>
+        </div>
+
+
+        <div layout="row">
+            <md-input-container >
+                <label> Select Classification</label>
+                <md-Select name="classification" ng-model="addIndicatorVM.new.classification" required>
+                    <md-option ng-repeat="lookup in addIndicatorVM.lookupData track by lookup.id" ng-value="{{lookup.id}}">
+                        {{lookup.name}}
+                    </md-option>
+                </md-Select>
+            </md-input-container>
+        </div>
+<!--    <div layout="row">-->
+<!--        <md-input-container >-->
+<!--            <label> Select Classification</label>-->
+<!--            <md-Select name="classification" ng-model="addIndicatorVM.new.classification" required>-->
+<!--                &lt;!&ndash;                <md-option value="">&#45;&#45;select priority [Angular]&#45;&#45;</md-option>&ndash;&gt;-->
+<!--                <md-option value="1">Low</md-option>-->
+<!--                <md-option value="2">High</md-option>-->
+<!--                <md-option value="3">Medium</md-option>-->
+<!--                <md-option value="4">She</md-option>-->
+<!--                <md-option value="5">Turned</md-option>-->
+<!--                <md-option value="6">Me</md-option>-->
+<!--                <md-option value="7">into</md-option>-->
+<!--                <md-option value="8">a</md-option>-->
+<!--                <md-option value="9">Newt</md-option>-->
+<!--                <md-option value="10">I</md-option>-->
+<!--                <md-option value="11">Got</md-option>-->
+<!--                <md-option value="12">Better</md-option>-->
+<!--                <md-option value="13">LOL</md-option>-->
+<!--            </md-Select>-->
+<!--        </md-input-container>-->
+<!--    </div>-->
+
+<!--        <br/>-->
+
+
+
+<!--        <div layout="row">-->
+<!--            <md-input-container>-->
+<!--                <label>das ist gut?</label>-->
+<!--                <input type="text" ng-change="addReportVM.validate()" name="is_good" ng-model="addReportVM.new.is_good" required>-->
+<!--                <span ng-show="myForm.is_good.$touched && myForm.is_good.$error.customError">-->
+<!--                Was ist das?-->
+<!--            </span>-->
+<!--            </md-input-container>-->
+<!--        </div>-->
+
+<!--        <br/>-->
+
+<!--        <md-button class="md-warn md-raised">-->
+<!--            <md-icon class="fas fa-4x fa-dog"></md-icon>-->
+<!--            Cancel-->
+<!--        </md-button>-->
+        <md-button class="md-primary md-raised md-accent" ng-click="myForm.$valid && addIndicatorVM.save()" type="submit">
+            <md-icon class="fas fa-4x fa-shield-alt"></md-icon>
+            Save
+        </md-button>
+        <md-button class="md-primary md-raised" ng-click="addIndicatorVM.reset()">
+            <md-icon class="fas fa-4x fa-dragon"></md-icon>
+            Reset
+        </md-button>
+
+    </form>
+
+    <!--    <br/>-->
+    <!--    <button type="reset">-->
+    <!--        Reset-->
+    <!--    </button>-->
+    <!--    <button type="button">-->
+    <!--        Save-->
+    <!--    </button>-->
+
+</div>

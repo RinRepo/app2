@@ -1,0 +1,80 @@
+<div class="cm-vr feature">
+
+    <header layout="row" layout-align="space-between center">
+        <!-- Page Title -->
+        <div class="md-headline"><i class="fas fa-file-alt"></i> Add Countermeasure </div>
+    </header>
+
+    <!-- Progress bar -->
+    <div class="progressBarWrapper">
+        <md-progress-linear ng-show="addCountermeasureVM.dataIsLoading" md-mode="indeterminate"></md-progress-linear>
+    </div>
+
+    <pre>
+
+    </pre>
+
+    <form name="myForm" novalidate>
+        <br/>
+
+        <div layout="row">
+            <md-input-container>
+                <label> Countermeasure Value</label>
+                <input type="text" placeholder="Enter Countermeasure Value" name="countermeasure_value"
+                       ng-model="addCountermeasureVM.new.countermeasure_Value" required/>
+                <span ng-show="myForm.countermeasure_value.$touched && myForm.countermeasure_value.$error.required">
+                Countermeasure Value cannot be blank.
+            </span>
+            </md-input-container>
+        </div>
+
+        <br/>
+
+        <div layout="row">
+            <md-input-container >
+                <label> Select Status</label>
+                <md-Select name="status" ng-model="addCountermeasureVM.new.status" required>
+                    <md-option ng-repeat="lookup in addCountermeasureVM.status" ng-value="{{lookup.id}}">
+                        {{lookup.name}}
+                    </md-option>
+                </md-Select>
+                <span ng-show="myForm.status.$touched && myForm.status.$error.required">
+                Countermeasure Status cannot be blank.
+            </span>
+            </md-input-container>
+        </div>
+
+
+        <div layout="row">
+            <md-input-container>
+                <label>Date</label>
+                <md-datepicker name="start" ng-model="addCountermeasureVM.new.start_date"
+                               md-placeholder="startDate"
+                               md-hide-icons="triangle"
+                               md-max-date="addCountermeasureVM.new.endDate" required>
+                </md-datepicker>
+                <span ng-show="myForm.start.$touched && myForm.start.$error.required">
+                Date cannot be blank.
+            </span>
+            </md-input-container>
+                <md-input-container>
+                <label>Date</label>
+                <md-datepicker name="end" ng-model="addCountermeasureVM.new.end_date"
+                               md-placeholder="endDate"
+                               md-hide-icons="triangle" md-min-date="addCountermeasureVM.new.startDate" required>
+                </md-datepicker>
+                    <span ng-show="myForm.end.$touched && myForm.end.$error.required">
+                Date cannot be blank.
+            </span>
+            </md-input-container>
+        </div>
+
+        <md-button class="md-primary md-raised md-accent" ng-click="myForm.$valid && addCountermeasureVM.save()" type="submit">
+            <md-icon class="fas fa-4x fa-shield-alt"></md-icon>
+            Save
+        </md-button>
+        <md-button class="md-primary md-raised" ng-click="addCountermeasureVM.reset()">
+            <md-icon class="fas fa-4x fa-dragon"></md-icon>
+            Reset
+        </md-button>
+</div>

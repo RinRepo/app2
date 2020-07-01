@@ -1,0 +1,1 @@
+../../../../../../database-migration/src/main/resources/db/migration/V1.1__baseline.sql

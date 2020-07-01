@@ -1,0 +1,73 @@
+##########################################################
+# application.yaml   (used for development purposes)
+##########################################################
+name: app2
+server.servlet.context-path: /app2
+server.port: 8080
+
+es.url: http://localhost:9201
+
+spring.profiles.active: dev
+
+###########################################################
+# Database Settings
+##########################################################
+app.datasource:
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/app2_db
+  username: ENC(QvKUO37OmmWDj8wGIAdsYioXB72MwW95)
+  password: ENC(R+l4k31jxZA0+xfeaf4JSA==)
+  maxPoolSize: 10
+
+jasypt:
+  encryptor:
+     algorithm: PBEWithMD5AndDES
+     password: 'ab5823423464j1k2#><!!6298<-+'
+
+
+###########################################################
+# For the exception handler to work properly
+# FYI - this is a collection of documents (the application.yaml)
+##########################################################
+development.mode: false
+
+
+
+
+---
+###########################################################
+#this is the dev profile
+##########################################################
+spring.profiles: dev
+
+server.port: 8080
+development.mode: true
+
+bypass.id: 5
+security.mode: whatever
+
+
+---
+#######################################
+# P R O D        P R O F I L E
+#######################################
+spring.profiles: prod
+
+development.mode: false
+security.mode: pki
+
+server:
+  port: 8443
+  ssl:
+    key-store: webapp/src/main/dev_resources/myKeystore.jks
+    key-store-password: changeit
+    key-store-type: JKS
+    client-auth: need
+    trust-store: webapp/src/main/dev_resources/myTruststore.jks
+    trust-store-password: changeit
+    trust-store-type: JKS
+
+# Secure the cookies
+server.servlet.session.cookie.secure: true
+server.servlet.session.cookie.http-only: true
+

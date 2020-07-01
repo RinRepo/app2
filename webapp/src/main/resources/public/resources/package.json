@@ -1,0 +1,25 @@
+{
+  "name": "resources",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "5.12.0",
+    "@uirouter/angularjs": "1.0.25",
+    "angular": "1.7.9",
+    "angular-animate": "1.7.9",
+    "angular-aria": "1.7.9",
+    "angular-material": "1.1.21",
+    "angular-messages": "1.7.9",
+    "angular-resizable": "1.2.0",
+    "angular-sanitize": "1.7.9",
+    "angular-scroll": "1.0.2",
+    "angular-ui-grid": "4.8.3"
+  }
+}

@@ -1,0 +1,41 @@
+<div class="cm-vr feature">
+
+    <header layout="row" layout-align="space-between center">
+        <!-- Page Title -->
+        <div class="md-headline"><i class="fas fa-file-alt"></i> View Reports</div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progressBarWrapper">
+        <md-progress-linear ng-show="viewReportsVM.dataIsLoading" md-mode="indeterminate"></md-progress-linear>
+    </div>
+
+    <br/>
+
+    <pre>
+<!--                   navVM.from={{ navVM.from | json}}-->
+<!--                   navVM.to={{ navVM.to | json}}-->
+            {{viewReportsVM.userPrefs| json}}
+<!--        the pipe | lowercase will change the input to be all lowercase only for display-->
+            {{viewReportsVM.userPrefs.username| lowercase}}
+
+                </pre>
+        <input type="text" placeholder="username" name="username" ng-model="viewReportsVM.userPrefs.username"/>
+        <input type="text" placeholder="colorCats" name="colorPreference" ng-model="viewReportsVM.userPrefs.colorPreference"/>
+        <input type="text" placeholder="colorPreference" name="favoriteColor" ng-model="viewReportsVM.userPrefs.favoriteColor"/>
+        <button type="submit" ng-click="viewReportsVM.submit()">Save</button>
+
+
+    <!-- Blank space between the page title and the grid -->
+    <div style="height: 15px"></div>
+
+
+    <!-- UI GRID -->
+    <div ui-grid="viewReportsVM.gridOptions" class="grid"
+         ui-grid-resize-columns ui-grid-move-columns ui-grid-exporter
+         ui-grid-selection      ui-grid-pagination></div>
+
+
+
+
+</div>
